@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import GaussianNB
 
-data = pd.read_csv("E:/PolitikaSaglkDeneme.csv", engine='c')
+data = pd.read_csv("E:/ourdataset.csv", engine='c')
 # print(data)
 
 sentences_training = [doc for doc in data.iloc[:, 0]]
@@ -19,11 +19,11 @@ print(sen_train_vector.toarray())
 clf = GaussianNB()
 model = clf.fit(X=sen_train_vector.toarray(), y=classification_training)
 
-sen_test_vector = vectorizer.transform(['bu kış hasta olmamak için neler yemeliyiz'])
+sen_test_vector = vectorizer.transform(['huawei telefonlar amerikada yasaklandı'])
 print(sen_test_vector.toarray())
 y_pred = model.predict(sen_test_vector.toarray())
 print(y_pred)
 
-sen_test_vector = vectorizer.transform(['gelecek seçimlerde erdoğan aday olacak mı'])
+sen_test_vector = vectorizer.transform([' gençliğe hitabesini kaç yılında yazdı'])
 y_pred = model.predict(sen_test_vector.toarray())
 print(y_pred)
